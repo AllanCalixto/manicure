@@ -18,8 +18,7 @@ public interface IAgendamentoService {
 
     public boolean horarioDisponivel(LocalDate data, LocalTime hora);
 
-    public Agendamento criarNovoAgendamento(String nome, String telefone, LocalDate data, LocalTime hora, TipoServico servico);
-
     public void cancelarAgendamento(Long id);
 
+    Agendamento criarNovoAgendamento(Long id, String nome, String telefone, LocalDate data, String hora, String servico);
 }
