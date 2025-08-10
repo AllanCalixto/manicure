@@ -5,7 +5,6 @@ import br.com.calixto.manicure.entity.Cliente;
 import br.com.calixto.manicure.entity.TipoServico;
 import br.com.calixto.manicure.repository.AgendamentoRepository;
 import br.com.calixto.manicure.repository.ClienteRepository;
-import ch.qos.logback.core.net.server.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

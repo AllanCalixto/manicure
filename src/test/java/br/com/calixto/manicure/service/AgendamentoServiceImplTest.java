@@ -44,7 +44,6 @@ class AgendamentoServiceImplTest {
 
         assertEquals(2, resultado.size());
         verify(agendamentoRepository).findAll();
-
     }
 
     @Test
