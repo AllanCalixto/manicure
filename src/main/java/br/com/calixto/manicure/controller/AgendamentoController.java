@@ -15,13 +15,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/agendamentos")
+@CrossOrigin("*")
 public class AgendamentoController {
 
     @Autowired
     private IAgendamentoService agendamentoService;
 
-    @GetMapping
+    @GetMapping("/agendamentos")
     public ResponseEntity<List<AgendamentoResponse>> listarTodos() {
         List<AgendamentoResponse> agendamentos = agendamentoService.listarTodosAgendamentos()
                 .stream()
@@ -30,7 +30,7 @@ public class AgendamentoController {
                 return ResponseEntity.ok(agendamentos);
     }
 
-    @GetMapping("/data")
+    @GetMapping("agendamentos/data")
     public ResponseEntity<List<AgendamentoResponse>> listarPorData(@RequestParam("data") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate data) {
         List<AgendamentoResponse> agendamentosPorData = agendamentoService.listarAgendamentoPorData(data)
                 .stream()
@@ -39,7 +39,7 @@ public class AgendamentoController {
                 return ResponseEntity.ok(agendamentosPorData);
     }
 
-    @PostMapping
+    @PostMapping("/agendamentos")
     public ResponseEntity<AgendamentoResponse> criarNovoAgendamento(@RequestBody AgendamentoRequest request) {
         Agendamento agendamento = agendamentoService.criarNovoAgendamento(
                 request.cliente().id(),
@@ -52,7 +52,7 @@ public class AgendamentoController {
         return ResponseEntity.ok(AgendamentoResponse.fromEntity(agendamento));
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("agendamentos/{id}")
     public ResponseEntity<Void> cancelar(@PathVariable Long id) {
         agendamentoService.cancelarAgendamento(id);
         return ResponseEntity.noContent().build();

@@ -27,7 +27,7 @@ public class ConfiguracoesSeguranca {
         return http
                 .authorizeHttpRequests(
                         req -> {
-                            req.requestMatchers("/api/v1/login").permitAll();
+                            req.requestMatchers("/login").permitAll();
                             req.anyRequest().authenticated();
                         }
                 )

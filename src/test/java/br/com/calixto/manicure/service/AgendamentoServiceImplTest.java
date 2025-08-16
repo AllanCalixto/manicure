@@ -131,5 +131,4 @@ class AgendamentoServiceImplTest {
 
         assertEquals("Horário não disponível!", ex.getMessage());
     }
-
 }

@@ -7,11 +7,13 @@ import br.com.calixto.manicure.exception.RegraDeNegocioException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin("*")
 public class AutenticacaoController {
 
     private final AuthenticationManager authenticationManager;
@@ -25,7 +27,7 @@ public class AutenticacaoController {
 
 
 
-    @PostMapping("/api/v1/login")
+    @PostMapping("/login")
     public ResponseEntity<String> efetuarLogin(@RequestBody DadosLogin dados ) throws RegraDeNegocioException {
         // verificar os dados da requisição e compara com o que existem no banco
        var authenticationToken = new UsernamePasswordAuthenticationToken(dados.email(), dados.senha());
